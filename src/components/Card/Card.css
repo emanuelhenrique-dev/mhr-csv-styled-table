@@ -1,0 +1,209 @@
+.card-border {
+  width: fit-content;
+  height: fit-content;
+
+  border: 6px solid #000F2C;
+  
+}
+
+.card-border.marked {
+  border-color:  white;
+}
+
+
+.Card {
+  position: relative;
+  width: 800px;
+  height: 250px;
+  margin: 3px;
+  background: url(../../assets/suriken_2.png) rgba(0, 15, 44, 0.95);
+  
+  background-repeat: no-repeat;
+  background-position: 95%;
+  background-size: 37.324% 120.14%;
+
+  display: flex;
+  overflow: hidden;
+} 
+
+.Card .number-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 8px 12px;
+}
+
+.Card .number-card h2 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.Card .number-card img {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.Card .number-card img.look {
+  filter: brightness(0.5);
+}
+
+
+
+.Card .details {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Card .details .atributes{
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500; 
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.Card .details .atributes .slots{
+  padding-left: 4px;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.Card .details .atributes .slots img{
+  width: 22px;
+  height: 22px;
+}
+
+
+.Card .details .atributes .defenses {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.Card .details .atributes .defenses p {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Card .details .atributes .defenses img {
+  width: 24px;
+  height: 24px;
+}
+
+
+.Card .details .skills {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 3px;
+
+  padding-right: 5%;
+  padding-top: 20px;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%; /* 31.287px */
+}
+
+.Card .details .skills .skills-values {
+
+  width: 415px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-inline: auto;
+
+}
+
+.Card .details .skills .skills-values p {
+  width: 200px;
+  height: 45px; 
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 3.911px;
+  border: 0.978px solid #1c4189;
+  background: rgba(4, 23, 65, 0.70);
+
+  color: #ffffff;
+  font-family: var(--family2);
+  font-size: 16.643px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 15.643px */
+
+}
+
+.Card svg {
+  position: absolute;
+  cursor: pointer;
+  top: 8px;
+  right: 8px;
+}
+
+.Card .abstractData {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-right: 5px;
+  padding-block: 5px; 
+  
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  overflow-y: auto;
+  margin-right: 45px;
+}
+
+.Card .abstractData table {
+  text-align: left;
+  width: 100%;                 
+  height: fit-content; 
+  padding-block: auto;  
+  border: 1px solid  #3E3E66;  
+  border-radius: 10px;
+  border-top-left-radius: 0 ;     
+  border-collapse: separate;       
+}
+
+.Card .abstractData table td,th {
+  padding-left: 8px;
+  height: 34px;
+  background-color: rgba(0, 0, 0, 0.11);
+  border: 2px solid  #1c4189;
+  border-top-right-radius: 10px ;
+}
+
+.Card .abstractData table th {
+  height: 30px;
+}
+
+.Card .abstractData table td {
+  max-height: 30px;
+}
+
+.Card .abstractData table thead {
+  background-color: #1c4189;
+  border-top-right-radius: 10px ;
+}

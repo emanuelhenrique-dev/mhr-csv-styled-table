@@ -1,3 +1,169 @@
 .App {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
   text-align: center;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), 
+  url(./assets/Backgroung-image.jpg) lightgray 50% / cover no-repeat;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%),
+  url(assets/Backgroung-image.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  overflow-x: hidden;
+}
+
+
+.App .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), 
+  url(./assets/header_bg.jpg) lightgray 0 -608.622px / 100% 404.508% no-repeat;
+  filter: brightness(0.9);
+  padding-top: 30px;
+
+  z-index: 10;
+}
+
+.App .header:after {
+  content: "";
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: url(./assets/header-bottom-bg.png) 50% / cover no-repeat;
+  filter: brightness(0.7);
+  pointer-events: none;
+}
+
+
+.App .header .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: 500px; /* Tamanho máximo do contêiner */
+  margin: 0 auto;
+  margin-bottom: 40px;
+  
+}
+
+
+.App .header .title input {
+  display: flex;
+  width: auto; 
+  max-width: 370px; 
+  margin-left: 20px;
+
+  background-color: transparent;
+  border: none;
+  border: 2px solid transparent;
+  color: #E2E2E3;
+  font-family: var(--family2);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  text-align: left;
+  animation: blink 0.5s step-end infinite alternate;
+  animation-iteration-count: 50;
+}
+
+@keyframes blink {
+  50% {
+    border-left: 2px solid white;
+  }
+}
+
+.App .header .input-csv-file {
+  position: absolute;
+  bottom: -80px;      
+  left: 50%;     
+  transform: translate(-50%, 0); 
+  max-width: 300px;
+
+  background: #071C47;
+  display: inline-flex;
+  padding: 12px 24px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+
+  font-family: var(--family2);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  text-transform: uppercase;
+
+  cursor: pointer;
+  white-space: nowrap;       /* Impede que o texto quebre em várias linhas */        /* Esconde o conteúdo que ultrapassar o tamanho do botão */
+  text-overflow: ellipsis; 
+}
+.App .header .input-csv-file {
+  user-select: none;
+}
+
+.App .header .input-csv-file:hover {
+  filter: brightness(1.4);
+}
+
+.App .container-cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: calc((var(--header-height)) + 110px);
+  padding-bottom: 20px;
+}
+.App .container-cards::-webkit-scrollbar {
+  width: 12px; /* Largura da scrollbar */
+}
+.App .container-cards ::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor do fundo da scrollbar */
+}
+
+.App .container-cards::-webkit-scrollbar-thumb {
+  background: #032974; /* Cor da barra de rolagem */ /* Arredondamento da barra de rolagem */
+}
+
+.App .container-cards::-webkit-scrollbar-thumb:hover {
+  background: #112b5f; /* Cor da barra ao passar o mouse */
+}
+
+.App .increased-number {
+  width: fit-content;
+  height: fit-content;
+  border: 6px solid #000F2C;
+
+}
+
+.App .increased-number:hover {
+  border-color: #000f2cbb;
+}
+
+.App .increased-number button {
+  background-color: rgba(0, 15, 44, 0.95);
+  color: white;
+  font-family: var(--family1);
+  font-size: 16px;
+
+  width: 150px;
+  height: 50px;
+  border: none;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.App .increased-number button:hover {
+  background-color: rgba(31, 62, 124, 0.95)
 }

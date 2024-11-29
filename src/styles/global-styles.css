@@ -1,9 +1,19 @@
 :root {
-  font-size: 62.5%
+  font-size: 62.5%;
+  --family1: Inter, sans-serif;
+  --family2: Poppins, sans-serif;
+  --header-height:200px;
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+html, body {
+  color: #FFF;
+  font-family: var(--family1);
+  height: 100%;
+  width: 100%;
 }

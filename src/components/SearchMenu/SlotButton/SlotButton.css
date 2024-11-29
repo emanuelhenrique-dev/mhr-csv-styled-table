@@ -1,0 +1,31 @@
+.SlotButton {
+  width: 25px;
+  height: 25px; 
+
+  border-radius: 44.95px;
+  border: 0.725px solid #17171A;
+  background: #3A3A62;
+
+  
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.SlotButton:active {
+  filter: brightness(1.5);
+}
+
+.SlotButton p{
+  color: #9C8950;
+  font-size: 20px;
+  line-height: 100%;
+  user-select: none;
+}
+
+.SlotButton:nth-child(1) p{
+  font-size: 26px;
+  height: 30px;
+}
