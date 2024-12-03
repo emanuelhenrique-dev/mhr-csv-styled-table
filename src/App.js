@@ -19,6 +19,7 @@ function App() {
     if (file) {
       Papa.parse(file, {
         complete: (result) => {
+          setCsvData([]);
           const parsedData = result.data;
 
           // Filtrar itens com Type ou Value inválidos
@@ -83,7 +84,7 @@ function App() {
         const value = parseInt(Value, 10);
 
         // Agrupar os valores de tipos iguais
-        if (Type.includes('Def')) {
+        if (Type.includes('2`Def')) {
           acc.def += value; // Soma o valor de Def
         } else if (Type.includes('Fire Res')) {
           acc.FireRes += value;
