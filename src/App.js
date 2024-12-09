@@ -108,7 +108,6 @@ function App() {
             acc.skill.push({ Type, Value: value });
           }
         }
-
         return acc;
       },
       {

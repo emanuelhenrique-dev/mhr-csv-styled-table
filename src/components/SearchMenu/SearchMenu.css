@@ -6,7 +6,7 @@
 }
 
 
-.App .header .search-terms input[type="text"] {
+.App .header .search-terms input[type="search"] {
   border-radius: 8px;
   border: 2px solid #FFF;
   background: #242420;
