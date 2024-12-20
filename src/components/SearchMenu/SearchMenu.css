@@ -64,18 +64,40 @@
 
 
 .App .header .search-terms .selector-skills {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 8px;
-  margin-bottom: 5px;
+  gap: 5px;
+  padding-bottom: 10px;
 }
 
 .App .header .search-terms .selector-skills label {
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
+}
+
+.App .header .search-terms .selector-skills .select-skill {
+  position: relative;
+}
+
+.App .header .search-terms .selector-skills .select-skill button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(1);
+  right: -20px;
+
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 100;
+  color: white;
+}
+
+.App .header .search-terms .selector-skills .select-skill button:hover {
+  transform:  translateY(-50%) scale(1.2);
 }
 
 .App .header .search-terms .selector-skills select {

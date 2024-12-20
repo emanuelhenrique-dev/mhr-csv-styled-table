@@ -140,12 +140,14 @@ export const SearchMenu = ({groupedData, filteredData, setFilteredData, setFilte
     </div>
     <div className='selector-skills'>
       <label htmlFor="skills">Available skills:</label>
+      <div className='select-skill'>
         <select name="cars" id="skills" value={avaSKills} onChange={(e) => setAvaSkills(e.target.value)}>
           <option ></option>
           {!viewMarked && (SkillsSelect(filteredData).map((group, index)=>(
           <option key={index} >{group}</option>)))}
         </select>
-        {/* <button onClick={()=>setAvaSkills('')}>close</button> */}
+        {avaSKills && (<button onClick={()=>setAvaSkills('')}>X</button>)}
+      </div>
     </div>
   </div> ); 
 }
