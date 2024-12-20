@@ -61,3 +61,34 @@
 .App .header .search-terms svg:hover {
   transform: scale(1.2);
 }
+
+
+.App .header .search-terms .selector-skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.App .header .search-terms .selector-skills label {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.App .header .search-terms .selector-skills select {
+  width: 150px;
+
+  border-radius: 8px;
+  border: 2px solid #FFF;
+  background: #242420;
+  padding: 3px 6px;
+
+  color: #AFABB6;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

@@ -9,6 +9,7 @@ function App() {
   const [csvData, setCsvData] = useState([]);
   const [groupedData, setGroupedData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [filteredData2, setFilteredData2] = useState([]);
   const [visibleCardsCount, setVisibleCardsCount] = useState(500);
   const [viewMarked, setViewMarked] = useState(false);
 
@@ -19,6 +20,7 @@ function App() {
     if (file) {
       Papa.parse(file, {
         complete: (result) => {
+          setGroupedData([]);
           setCsvData([]);
           const parsedData = result.data;
 
@@ -74,7 +76,6 @@ function App() {
     const grouped = cards.reduce(
       (acc, curr) => {
         const { Type, Value } = curr;
-
         // Verifique se o Type existe antes de fazer qualquer operação
         if (!Type) {
           console.error('Tipo não definido para o item:', curr); // Mensagem de erro caso Type seja undefined
@@ -148,14 +149,21 @@ function App() {
         </div>
         <SearchMenu
           groupedData={groupedData}
+          filteredData={filteredData}
           setFilteredData={setFilteredData}
+          setFilteredData2={setFilteredData2}
           setVisibleCardsCount={setVisibleCardsCount}
           viewMarked={viewMarked}
           setViewMarked={setViewMarked}
         />
         <label htmlFor="file" className="input-csv-file">
           <img src="./upload-cloud.png" alt="upload cloud" />
-          {fileName} -{groupedData && <p> {filteredData.length} Cards</p>}
+          {fileName}
+          {groupedData.length > 0 && (
+            <p>
+              {'>>'} {filteredData2.length} Cards
+            </p>
+          )}
         </label>
         <input
           type="file"
@@ -169,7 +177,7 @@ function App() {
 
       <div className="container-cards">
         {!viewMarked
-          ? filteredData
+          ? filteredData2
               .slice(0, visibleCardsCount)
               .map((group, index) => (
                 <Card
@@ -179,7 +187,7 @@ function App() {
                   abstract={group.cards}
                 />
               ))
-          : filteredData.map(
+          : filteredData2.map(
               (group, index) =>
                 group.cardsGroup.mark && (
                   <Card
@@ -191,7 +199,7 @@ function App() {
                 )
             )}
 
-        {!(filteredData.length <= visibleCardsCount) && !viewMarked && (
+        {!(filteredData2.length <= visibleCardsCount) && !viewMarked && (
           <div className="increased-number">
             <button onClick={handleNumberMaxCards}>More Cards</button>
           </div>
