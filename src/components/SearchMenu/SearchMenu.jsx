@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { SlotButton } from './SlotButton/SlotButton';
 import './SearchMenu.css'
+import { values } from 'lodash';
 
 export const SearchMenu = ({groupedData, filteredData, setFilteredData, setFilteredData2, setVisibleCardsCount, viewMarked, setViewMarked}) => {
 
@@ -16,7 +17,8 @@ export const SearchMenu = ({groupedData, filteredData, setFilteredData, setFilte
   const reset = () => {
     setSearchSkill('');
     setSearchSlot('');
-    console.log('reset search terms')
+    setAvaSkills("");
+    //console.log('reset search terms')
   }
 
 
@@ -50,33 +52,43 @@ export const SearchMenu = ({groupedData, filteredData, setFilteredData, setFilte
   const FilteredCards2 = (data) => {
     return data.filter((group)=>{
 
+      if (!avaSKills) return data;
+
+      const Value = avaSKills.toString().split(":")[0];   // Texto da opção selecionada
+      const Skill = avaSKills.toString().split(":")[1]; 
+      
       const skillsCard = group.cardsGroup.skill;
-      const foundSkill = skillsCard.find((skill)=> skill.Type.toLowerCase().includes((avaSKills).toLowerCase()));
+
+      const foundSkill = skillsCard.find((skill)=> (skill.Type.toLowerCase().includes(Skill?.toLowerCase())) && ((skill.Value > 0).toString().toLowerCase() == Value));
       //console.log(foundSkill);
       return foundSkill;
   })}
 
   const SkillsSelect = (data) => {
     return data.reduce((acc, curr) => {
-
       const skills = curr.cardsGroup.skill;
-
+  
       skills.forEach(element => {
         const { Type, Value } = element;
-        const value = parseInt(Value, 10);
-        const skill = element.Type.split(":")[1];
-
-        const existingSkill = acc.find((item) => item === skill);
-        if (existingSkill) {
-          return
-        } else {
-          acc.push(skill);
+        const value = parseInt(Value, 10) > 0;  // Define value como true ou false
+        const skill = Type.split(":")[1];
+  
+        // Cria o objeto skill-value
+        const skillObject = { skill, value };
+  
+        // Verifica se já existe o objeto com mesma skill e value
+        const existingSkill = acc.find(item => item.skill === skill && item.value === value);
+        
+        // Se não existir, adiciona ao acumulador
+        if (!existingSkill) {
+          acc.push(skillObject);
         }
       });
-
+  
       return acc;
-    },[]).sort()
+    }, []).sort((a, b) => a.skill.localeCompare(b.skill));  // Ordena pela skill em ordem alfabética
   }
+  
 
   //console.log(JSON.stringify(SkillsSelect(filteredData)));
   
@@ -98,6 +110,7 @@ export const SearchMenu = ({groupedData, filteredData, setFilteredData, setFilte
     }, [avaSKills, filteredData]) 
  
 
+
   return (         
   <div className="search-terms">
     <svg onClick={()=> {
@@ -113,7 +126,8 @@ export const SearchMenu = ({groupedData, filteredData, setFilteredData, setFilte
       value={searchSkill}
       onChange={(e) => (
         setSearchSkill(e.target.value),
-        setAvaSkills('')
+        setAvaSkills(''),
+        setSearchSlot('')
       )}
     />
     <div className="slots-number">
@@ -141,12 +155,13 @@ export const SearchMenu = ({groupedData, filteredData, setFilteredData, setFilte
     <div className='selector-skills'>
       <label htmlFor="skills">Available skills:</label>
       <div className='select-skill'>
-        <select name="cars" id="skills" value={avaSKills} onChange={(e) => setAvaSkills(e.target.value)}>
-          <option ></option>
+        <select name="cars" id="skills" value={avaSKills} 
+        onChange={(e)=> setAvaSkills(e.target.value)}>
+          <option value="">Select skill</option>
           {!viewMarked && (SkillsSelect(filteredData).map((group, index)=>(
-          <option key={index} >{group}</option>)))}
+          <option className={group.value ? 'positive':'negative'} key={index} value={group.value +':'+ group.skill} >{group.skill} </option>)))}
         </select>
-        {avaSKills && (<button onClick={()=>setAvaSkills('')}>X</button>)}
+        {avaSKills && (<button onClick={()=> setAvaSkills("")}>X</button>)}
       </div>
     </div>
   </div> ); 

@@ -114,3 +114,28 @@
   font-weight: 500;
   line-height: normal;
 }
+
+.App .header .search-terms .selector-skills select:has(> option.positive:checked) {
+  color: rgb(138, 229, 138);
+}
+
+.App .header .search-terms .selector-skills select:has(> option.negative:checked) {
+  color: rgb(229, 138, 138);
+}
+
+
+.App .header .search-terms .selector-skills select.lose {
+  color: rgb(229, 138, 138);
+}
+
+.App .header .search-terms .selector-skills .select-skill option {
+  color: #AFABB6;
+}
+
+.App .header .search-terms .selector-skills .select-skill option.positive {
+  color: rgb(138, 229, 138);
+}
+
+.App .header .search-terms .selector-skills .select-skill option.negative {
+  color: rgb(229, 138, 138);
+}
